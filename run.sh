@@ -1,6 +1,23 @@
 #!/bin/bash -e
 
 source config.py
+source functions.inc
+
+##### DEPS Checks
+
+CheckDeps
+
+echo "Checking for dxfwrite..."
+MOD=`python -c 'import pkgutil; print(1 if pkgutil.find_loader("dxfwritex") else 0)'`
+
+if [ $MOD -eq 0 ]; then
+    echo -ne "python dxfwrite module is required\n\n"
+    echo "Perhaps try to install it with:"
+    echo "pip install dxfwrite"
+    exit 1
+fi
+
+##### Generate box
 
 python ./generate_box.py
 
