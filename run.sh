@@ -93,7 +93,7 @@ convert ${file_front_out} -background white -gravity center -extent $(identify -
 convert img/frontF.jpg -rotate 180 img/frontB.jpg								# back
 montage img/frontB.jpg img/LTP.jpg img/frontF.jpg -tile 1x3 -geometry +0+0 img/top_image.jpg			# all
 
-convert A4.jpg img/top_image.jpg -gravity center -composite img/top_image_A4.jpg				# set up on A4 page
+convert ${page_size}.jpg img/top_image.jpg -gravity center -composite img/top_image_${page_size}.jpg				# set up on Ax page
 
 ##### BOTTOM STICKER
 
@@ -117,10 +117,10 @@ convert ${file_front_out} -background white -gravity center -extent $(identify -
 convert img/frontF.jpg -rotate 180 img/frontB.jpg								# back
 montage img/frontF.jpg img/LTP.jpg img/frontB.jpg -tile 1x3 -geometry +0+0 img/bottom_image.jpg			# all
 
-convert A4.jpg img/bottom_image.jpg -gravity center -composite img/bottom_image_A4.jpg				# set up on A4 page
+convert ${page_size}.jpg img/bottom_image.jpg -gravity center -composite img/bottom_image_${page_size}.jpg				# set up on Ax page
 
 ##### GENERATE PDF
 
-convert -units PixelsPerInch -density 300 -define pdf:fit-page=A4 img/top_image_A4.jpg top_image_A4.pdf
-convert -units PixelsPerInch -density 300 -define pdf:fit-page=A4 img/bottom_image_A4.jpg bottom_image_A4.pdf
+convert -units PixelsPerInch -density 300 -define pdf:fit-page=${page_size} img/top_image_${page_size}.jpg top_image_${page_size}.pdf
+convert -units PixelsPerInch -density 300 -define pdf:fit-page=${page_size} img/bottom_image_${page_size}.jpg bottom_image_${page_size}.pdf
 

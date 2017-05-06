@@ -1,3 +1,4 @@
+page_size="A4"		# page size (A5/A4/A3 available)
 
 box_x=150		# outside X dimension
 box_y=50		# outside Y dimension
