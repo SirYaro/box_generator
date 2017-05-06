@@ -4,6 +4,24 @@ source config.py
 
 python ./generate_box.py
 
+
+##### convert dxf to g-code
+
+#echo "Generation g-code file"
+#DXF2GCODE_BIN='/opt/dfx2gcode/dxf2gcode.py'
+
+
+#IN=$(basename "${1}")
+#OUT=$(basename "${IN}" .dxf)
+#DIR=$(dirname "${1}")
+#
+#if [[ ${IN: -4} == ".dxf" ]];then
+#    ${DXF2GCODE_BIN} -e "box.nc" -q "box${DIR}/${IN}"
+#fi
+
+
+
+
 file_side_out='img/side.jpg'
 file_front_out='img/front.jpg'
 file_top_out='img/top.jpg'
