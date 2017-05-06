@@ -2,3 +2,4 @@
 *.dxf
 /.directory
 /logfile.txt
+*.nc

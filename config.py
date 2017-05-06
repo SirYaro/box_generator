@@ -22,3 +22,4 @@ file_front_in='img2.jpg'
 file_top_in='img3.jpg'
 
 DEPS="python convert montage identify"
+DXF2GCODE_BIN='/opt/dfx2gcode/dxf2gcode.py'

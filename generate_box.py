@@ -3,17 +3,17 @@
 from dxfwrite import DXFEngine as dxf
 execfile('config.py')
 execfile('functions.py')
-drawing = dxf.drawing('box.dxf')
+
 x=0+thick
 y=0+thick
 side_space=3*thick
 
-print "Generating box"
+print "Generating insert"
+drawing = dxf.drawing('insert.dxf')
 
 #drawing.add_layer('TEXTLAYER', color=2)
 drawing.add_layer('INSERT', color=3)
-drawing.add(dxf.text('Thinkness='+str(thick), insert=(0, -3)))
-drawing.add(dxf.text('Thinkness='+str(insert_thick), insert=(0, -6), layer='INSERT'))
+drawing.add(dxf.text('Thinkness='+str(insert_thick), insert=(-10, -3), layer='INSERT'))
 
 
 draw_rec(0,box_z/2,				insert_box_y,insert_box_z)	# scianka przednia
@@ -25,9 +25,12 @@ draw_rec(insert_box_y,-insert_box_z+box_z/2,	insert_box_x,insert_box_z)	# sciank
 #
 #draw_rec(box_y-2*thick,box_z-2*thick,	box_x,box_y)				# scianka gorna
 #draw_rec(box_y-2*thick,0,		box_x,-box_y)				# scianka dolna
+drawing.save()
 
 
-
+print "Generating box"
+drawing = dxf.drawing('box.dxf')
+drawing.add(dxf.text('Thinkness='+str(thick), insert=(-10, -3)))
 
 draw_rec2(x,y,				box_y-2*thick,box_z-2*thick, divide, inlet,1,1,1,1)	# scianka przednia
 draw_rec2(box_y-thick,y,		box_x,box_z-2*thick, divide, inlet,0,1,0,1)		# scianka lewa

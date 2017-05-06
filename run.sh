@@ -8,7 +8,7 @@ source functions.inc
 CheckDeps
 
 echo "Checking for dxfwrite..."
-MOD=`python -c 'import pkgutil; print(1 if pkgutil.find_loader("dxfwritex") else 0)'`
+MOD=`python -c 'import pkgutil; print(1 if pkgutil.find_loader("dxfwrite") else 0)'`
 
 if [ $MOD -eq 0 ]; then
     echo -ne "python dxfwrite module is required\n\n"
@@ -24,19 +24,13 @@ python ./generate_box.py
 
 ##### convert dxf to g-code
 
-#echo "Generation g-code file"
-#DXF2GCODE_BIN='/opt/dfx2gcode/dxf2gcode.py'
+echo "Generating g-code files"
+
+${DXF2GCODE_BIN} -e "box.nc" -q "box.dxf"
+${DXF2GCODE_BIN} -e "insert.nc" -q "insert.dxf"
 
 
-#IN=$(basename "${1}")
-#OUT=$(basename "${IN}" .dxf)
-#DIR=$(dirname "${1}")
-#
-#if [[ ${IN: -4} == ".dxf" ]];then
-#    ${DXF2GCODE_BIN} -e "box.nc" -q "box${DIR}/${IN}"
-#fi
-
-
+#####
 
 
 file_side_out='img/side.jpg'
