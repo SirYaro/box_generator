@@ -31,14 +31,20 @@ drawing.save()
 print "Generating box"
 drawing = dxf.drawing('box.dxf')
 drawing.add(dxf.text('Thinkness='+str(thick), insert=(-10, -3)))
+drawing.add_layer('s0', color=7)
+drawing.add_layer('s1', color=1)
+drawing.add_layer('s2', color=2)
+drawing.add_layer('s3', color=3)
+drawing.add_layer('s4', color=4)
+drawing.add_layer('s5', color=7)
+drawing.add_layer('s6', color=6)
 
-draw_rec2(x,y,				box_y-2*thick,box_z-2*thick, divide, inlet,1,1,1,1)	# scianka przednia
-draw_rec2(box_y-thick,y,		box_x,box_z-2*thick, divide, inlet,0,1,0,1)		# scianka lewa
-draw_rec2(box_y+box_x-thick,y,		box_y-2*thick,box_z-2*thick, divide, inlet,1,1,1,1)	# scianka tylna
-draw_rec2(2*box_y+box_x-3*thick,y,	box_x,box_z-2*thick, divide, inlet,0,1,0,1)		# scianka prawa
-
-draw_rec2(box_y-thick,box_z-thick,	box_x,box_y,  0, inlet,0,0,0,0)				# scianka gorna
-draw_rec2(box_y-thick,-box_y+thick,	box_x,box_y, 0, inlet,0,0,0,0)				# scianka dolna
+draw_rec2(x,y,				box_y-2*thick,box_z-2*thick, divide, inlet,1,1,1,1,'s1')# scianka przednia
+draw_rec2(box_y-thick,y,		box_x,box_z-2*thick, divide, inlet, 0,1,0,1,'s2')	# scianka lewa
+draw_rec2(box_y+box_x-thick,y,		box_y-2*thick,box_z-2*thick, divide, inlet,1,1,1,1,'s3')# scianka tylna
+draw_rec2(2*box_y+box_x-3*thick,y,	box_x,box_z-2*thick, divide, inlet, 0,1,0,1,'s4')	# scianka prawa
+draw_rec2(box_y-thick,box_z-thick,	box_x,box_y, 0, inlet,0,0,0,0,'s5')			# scianka gorna
+draw_rec2(box_y-thick,-box_y+thick,	box_x,box_y, 0, inlet,0,0,0,0,'s6')			# scianka dolna
 
 
 
